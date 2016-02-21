@@ -15,13 +15,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class Splash extends Activity {
+public class Main extends Activity {
 
 //    ProgressDialog mProgressDialog;
     /**
      * Duration of wait *
      */
-    private final int SPLASH_DISPLAY_LENGTH = 5000;
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
 
     /**
      * Called when the activity is first created.
@@ -29,7 +29,7 @@ public class Splash extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.layout);
+        setContentView(R.layout.main);
 
         /* New Handler to start the Menu-Activity 
          * and close this Splash-Screen after some seconds.*/
@@ -39,12 +39,13 @@ public class Splash extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(Splash.this, Activity1.class);
-                Splash.this.startActivity(mainIntent);
-                Splash.this.finish();
+                Intent mainIntent = new Intent(Main.this, Menu.class);
+                Main.this.startActivity(mainIntent);
+                Main.this.finish();
             }
-        }, SPLASH_DISPLAY_LENGTH);
+        }, SPLASH_DISPLAY_LENGTH);     
+        
+        
     }
 }
