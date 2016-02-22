@@ -12,42 +12,43 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import android.widget.TextView;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class Login_Status extends Activity {
+public class Activities extends Activity {
 
     private static final int REQUEST_CODE = 3434;
-
+    private Button btn_send;
+    public String webpage_output = null;
+    private TextView tvOutput;
+    //private FetchPageTask task = null;
+    private GridView gv;
+    private ArrayAdapter aryAdapter_list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_status);
-    
+        setObjectView();
         //EditText text2 = (EditText) findViewById(R.id.EditText02);
         //  text2.setText(getIntent().getStringExtra("Value1") + " " + getIntent().getStringExtra("Value2"));
 
-  
-
-     //   Logger.getLogger(S_Login.class.getName()).info(login.isValid() + "");
+        AsyncTask_Type login = new S_Login("http://vbacdu.ddns.net:8080/WBS/activity_json?", Activities.this, webpage_output, aryAdapter_list, gv, tvOutput, "post", "id=2");
+        login.executeAsyncTask();
 
     }
 
-   
-    public void onClick(View view) {
-        //      finish();
-        Intent i = new Intent(this, Menu.class);
-        startActivityForResult(i, REQUEST_CODE);
+    public void setObjectView() {
+        btn_send = (Button) findViewById(R.id.btn_send);
+        tvOutput = (TextView) findViewById(R.id.tvOutput);
+        tvOutput.setMovementMethod(ScrollingMovementMethod.getInstance());
+        gv = (GridView) findViewById(R.id.gridViewObj);
+        gv.setNumColumns(3);
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+                tvOutput.setText(parent.getItemAtPosition(position).toString() + " : " + position);
+            }
+        });
     }
-
-    public void onClick2(View view) {
-        //      finish();
-        Intent i = new Intent(this, Login.class);
-        startActivityForResult(i, REQUEST_CODE);
-    }
-
     /*
      @Override
      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -59,7 +60,4 @@ public class Login_Status extends Activity {
      }
      }
      }*/
-    public void setOutput(List<String> a) {
-
-    }
 }

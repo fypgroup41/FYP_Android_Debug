@@ -17,18 +17,24 @@ public class Menu extends Activity {
     }
 
     public void onClick(View view) {
-        finish();
-        Intent i = new Intent(this, Login.class);
-        i.putExtra("Value1", "Value one from Activity1 ");
-        i.putExtra("Value2", "Value two from Activity1");
+        //      finish();
+        Intent i = new Intent(this, AndroidBarcodeQrExample.class);
         startActivityForResult(i, REQUEST_CODE);
     }
 
     public void onClick2(View view) {
-        finish();
+//        finish();
         Intent i = new Intent(this, Login.class);
-        i.putExtra("Value1", "Value one from Activity1 ");
-        i.putExtra("Value2", "Value two from Activity1");
+        i.putExtra("Value1", "staff001");
+        i.putExtra("Value2", "fyp");
+        startActivityForResult(i, REQUEST_CODE);
+    }
+
+    public void onClick3(View view) {
+//        finish();
+        Intent i = new Intent(this, Activities.class);
+        i.putExtra("Value", "staff001");
+        i.putExtra("Value2", "fyp");
         startActivityForResult(i, REQUEST_CODE);
     }
     /*
