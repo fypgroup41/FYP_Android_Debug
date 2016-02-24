@@ -1,4 +1,4 @@
-package test.test;
+package fyp.project;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,7 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class AndroidBarcodeQrExample extends Activity {
+
+public class BarcodeQrcode extends Activity {
 
     /**
      * Called when the activity is first created.
@@ -30,7 +31,7 @@ public class AndroidBarcodeQrExample extends Activity {
             intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException anfe) {
-            showDialog(AndroidBarcodeQrExample.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+            showDialog(BarcodeQrcode.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 
@@ -40,7 +41,7 @@ public class AndroidBarcodeQrExample extends Activity {
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException anfe) {
-            showDialog(AndroidBarcodeQrExample.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+            showDialog(BarcodeQrcode.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 

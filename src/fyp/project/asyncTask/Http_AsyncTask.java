@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.test;
+package fyp.project.asyncTask;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,9 +17,7 @@ import java.util.logging.Logger;
  *
  * @author test
  */
-class Http_AsyncTask extends AsyncTask<String, Void, String> {
-
- 
+public class Http_AsyncTask extends AsyncTask<String, Void, String> {
 
     public AsyncTask_Type asyncTask;
     Http_GetPost http_getPost = new Http_GetPost();
@@ -40,11 +38,11 @@ class Http_AsyncTask extends AsyncTask<String, Void, String> {
 
         if (this.asyncTask.getHttp_method().equals("get")) {
             http_getPost.http_getPost_Entrance(urls[0], "get", this.asyncTask.getVal());
-            /*http_getPost.abcd();*/
+            /*http_getPost.uploadFile("/DCIM/Camera/a.mp4");*/
         }
         if (this.asyncTask.getHttp_method().equals("post")) {
             http_getPost.http_getPost_Entrance(urls[0], "post", this.asyncTask.getVal());
-            /*            http_getPost.abcd();*/
+            /*            http_getPost.uploadFile("/DCIM/Camera/a.mp4");*/
         }
 
         return null;
@@ -54,7 +52,7 @@ class Http_AsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         this.asyncTask.doWay(http_getPost.getWebpage_output());
-     
+
     }
 
     protected void onProgressUpdate(Integer... values) {

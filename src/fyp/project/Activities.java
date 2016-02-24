@@ -1,5 +1,7 @@
-package test.test;
+package fyp.project;
 
+import fyp.project.S_File.S_Activities;
+import fyp.project.asyncTask.AsyncTask_Type;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import android.widget.TextView;
+
 
 public class Activities extends Activity {
 
@@ -26,12 +29,11 @@ public class Activities extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_status);
+        setContentView(R.layout.activities);
         setObjectView();
         //EditText text2 = (EditText) findViewById(R.id.EditText02);
         //  text2.setText(getIntent().getStringExtra("Value1") + " " + getIntent().getStringExtra("Value2"));
-
-        AsyncTask_Type login = new S_Login("http://vbacdu.ddns.net:8080/WBS/activity_json?", Activities.this, webpage_output, aryAdapter_list, gv, tvOutput, "post", "id=2");
+        AsyncTask_Type login = new S_Activities("http://192.168.152.1:8080/WBS/activity_json?", Activities.this, webpage_output, aryAdapter_list, gv, tvOutput, "post", "id=2");
         login.executeAsyncTask();
 
     }
@@ -41,7 +43,7 @@ public class Activities extends Activity {
         tvOutput = (TextView) findViewById(R.id.tvOutput);
         tvOutput.setMovementMethod(ScrollingMovementMethod.getInstance());
         gv = (GridView) findViewById(R.id.gridViewObj);
-        gv.setNumColumns(3);
+        gv.setNumColumns(1);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {

@@ -1,5 +1,7 @@
-package test.test;
+package fyp.project;
 
+import fyp.project.S_File.S_Login;
+import fyp.project.asyncTask.AsyncTask_Type;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -15,6 +17,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.logging.Logger;
+
 
 public class Login extends Activity {
 
@@ -62,7 +65,7 @@ public class Login extends Activity {
         i.putExtra("password", edit_password.getText().toString());
         startActivityForResult(i, REQUEST_CODE);*/
 
-        AsyncTask_Type login = new S_Login("http://vbacdu.ddns.net:8080/WBS/login_json?", Login.this, webpage_output, aryAdapter_list, gv, tvOutput, "post", "userName=" + edit_username.getText().toString() + "&password=" + edit_password.getText().toString() + "");
+        AsyncTask_Type login = new S_Login("http://192.168.152.1:8080/WBS/login_json?", Login.this, webpage_output, aryAdapter_list, gv, tvOutput, "post", "userName=" + edit_username.getText().toString() + "&password=" + edit_password.getText().toString() + "");
         login.executeAsyncTask();
     }
 

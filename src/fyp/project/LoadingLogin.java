@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.test;
+package fyp.project;
 
 /**
  *
@@ -15,7 +15,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class Main extends Activity {
+
+public class LoadingLogin extends Activity {
 
 //    ProgressDialog mProgressDialog;
     /**
@@ -40,9 +41,9 @@ public class Main extends Activity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(Main.this, Menu.class);
-                Main.this.startActivity(mainIntent);
-                Main.this.finish();
+                Intent mainIntent = new Intent(LoadingLogin.this, Menu.class);
+                LoadingLogin.this.startActivity(mainIntent);
+                LoadingLogin.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);     
         

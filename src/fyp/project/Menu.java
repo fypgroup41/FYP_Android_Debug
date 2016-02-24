@@ -1,10 +1,11 @@
-package test.test;
+package fyp.project;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
 
 public class Menu extends Activity {
 
@@ -18,7 +19,7 @@ public class Menu extends Activity {
 
     public void onClick(View view) {
         //      finish();
-        Intent i = new Intent(this, AndroidBarcodeQrExample.class);
+        Intent i = new Intent(this, BarcodeQrcode.class);
         startActivityForResult(i, REQUEST_CODE);
     }
 
@@ -37,6 +38,14 @@ public class Menu extends Activity {
         i.putExtra("Value2", "fyp");
         startActivityForResult(i, REQUEST_CODE);
     }
+
+    public void onClick4(View view) {
+        finish();
+        Intent i = new Intent(this, Login.class);
+
+        startActivityForResult(i, REQUEST_CODE);
+    }
+
     /*
      @Override
      protected void onActivityResult(int requestCode, int resultCode, Intent data) {

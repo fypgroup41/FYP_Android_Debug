@@ -1,5 +1,7 @@
-package test.test;
+package fyp.project.S_File;
 
+import fyp.project.asyncTask.AsyncTask_Type;
+import fyp.project.asyncTask.Http_AsyncTask;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -11,9 +13,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
-import upload.lib.UploadVideo;
+import fyp.project.uploadFile.UploadFile;
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -23,6 +26,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
+import fyp.project.Menu;
+import fyp.project.R;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -136,64 +142,76 @@ public class S_Login extends AsyncTask_Type {
                 if (task == null || task.getStatus().equals(AsyncTask.Status.FINISHED)) {
                     task = new Http_AsyncTask(this);
                     task.execute(url);
-                    
+
                     //      Logger.getLogger(S_Login.class.getName()).info(s.getTask() + "CD");
                 }
             } catch (Exception ex) {
                 tvOutput.setText(ex.getMessage());
             }
         }
-        
+
     }
     //NewClass1 a = new NewClass1();
 
     public void doWay(String server_output) {
         /*        tvOutput.setText(Environment.getExternalStorageDirectory() + "/DCIM/Camera/a.mp4");*/
-
         JSONArray array = null;
         List<String> list_output = new ArrayList<String>();
         String output = server_output;
         if (!output.equals("[]")) {
 
-            Logger.getLogger(S_Login.class.getName()).info("true...............");
-            try {
-                array = new JSONArray(server_output);
-            } catch (JSONException ex) {
-                Logger.getLogger(S_Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            for (int n = 0; n < array.length(); n++) {
-                for (int m = 0; m < 3; m++) {
-                    try {
-                        output += " " + array.getJSONArray(n).get(m).toString() + "\n ";
-                    } catch (JSONException ex) {
-                        Logger.getLogger(S_Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    try {
-                        list_output.add(array.getJSONArray(n).get(m).toString());
-                    } catch (JSONException ex) {
-                        Logger.getLogger(S_Login.class.getName()).log(Level.SEVERE, null, ex);
+            /*            Logger.getLogger(S_Login.class.getName()).info("true...............");
+             try {
+             array = new JSONArray(server_output);
+             } catch (JSONException ex) {
+             Logger.getLogger(S_Login.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             for (int n = 0; n < array.length(); n++) {
+             for (int m = 0; m < 3; m++) {
+             try {
+             output += " " + array.getJSONArray(n).get(m).toString() + "\n ";
+             } catch (JSONException ex) {
+             Logger.getLogger(S_Login.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             try {
+             list_output.add(array.getJSONArray(n).get(m).toString());
+             } catch (JSONException ex) {
+             Logger.getLogger(S_Login.class.getName()).log(Level.SEVERE, null, ex);
 
-                    }
-                }
-                output += "\n";
-            }
-            String[] a = new String[list_output.size()];
-            int i = 0;
-            for (String number : a) {
-                a[i] = number;
-                i += 1;
-            }
-            aryAdapter_list = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, list_output);
-            gv.setAdapter(aryAdapter_list);
-            Logger.getLogger(S_Login.class.getName()).info(output);
+             }
+             }
+             output += "\n";
+             }
+             String[] a = new String[list_output.size()];
+             int i = 0;
+             for (String number : a) {
+             a[i] = number;
+             i += 1;
+             }
+             aryAdapter_list = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, list_output);
+             gv.setAdapter(aryAdapter_list);
+             Logger.getLogger(S_Login.class.getName()).info(output);
+             */
+            Intent i = new Intent(activity, Menu.class);
+            activity.startActivityForResult(i, REQUEST_CODE);
 
         } else {
+            EditText edit_username = (EditText) activity.findViewById(R.id.edit_username);
+            EditText edit_password = (EditText) activity.findViewById(R.id.edit_password);
+            if (output.equals("[]")) {
+                tvOutput.setText("Please Login Again"t);
+                edit_username.setText("");
+                edit_password.setText("");
+            } else {
+                tvOutput.setText("Page Not Found 404");
+            }
+            /*AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(activity);
+             MyAlertDialog.setTitle("Login Fail");
+             MyAlertDialog.setMessage("Please Login Again");
+             MyAlertDialog.show();
+             
+             */
 
-            tvOutput.setText("Page Not Found 404" + server_output);
-
-            Intent i = new Intent(activity, Login.class);
-            i.putExtra("type", "false");
-            activity.startActivityForResult(i, REQUEST_CODE);
         }
 
         mProgressDialog.dismiss();

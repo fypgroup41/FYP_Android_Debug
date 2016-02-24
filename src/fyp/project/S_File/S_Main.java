@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.test;
+package fyp.project.S_File;
 
+import fyp.project.asyncTask.AsyncTask_Type;
 import android.app.Activity;
 import android.view.View;
 import java.net.HttpURLConnection;

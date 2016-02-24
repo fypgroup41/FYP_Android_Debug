@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.test;
+package fyp.project.asyncTask;
 
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
-import upload.lib.UploadVideo;
+import fyp.project.uploadFile.UploadFile;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -57,7 +57,6 @@ public class Http_GetPost {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 result = convertInputStreamToString(in);
                 webpage_output = result;
-                
 
             }
         } catch (Exception e) {
@@ -150,10 +149,10 @@ public class Http_GetPost {
         return data;
     }
 
-    public void abcd() {
-        UploadVideo a = new UploadVideo();
-
-        int reponse = a.upLoad2Server(new File(Environment.getExternalStorageDirectory() + "/DCIM/Camera/a.mp4").toString());
+    public void uploadFile(String path) {
+        UploadFile upload_file = new UploadFile();
+        int reponse = upload_file.upLoad2Server(new File(Environment.getExternalStorageDirectory() + path).toString());
+        
     }
 
 }

@@ -1,4 +1,4 @@
-package upload.lib;
+package fyp.project.uploadFile;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -25,7 +25,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author test
  */
-public class UploadVideo {
+public class UploadFile {
 
     Logger m_log = Logger.getLogger("com.mobilefish.demo.test");
 
